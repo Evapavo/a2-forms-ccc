@@ -1,0 +1,6 @@
+<app-quote-form (onCreate)="onCreateQuote($event)"></app-quote-form>
+<ul>
+  <li *ngFor="let quote of quotes">
+    <app-quote-item [quote]="quote"></app-quote-item>
+  </li>
+</ul>

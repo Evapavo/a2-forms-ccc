@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmitQuoteForm(quoteForm)" #quoteForm="ngForm">
+  <div>
+    <label for="author">Author: </label>
+    <input type="text" name="author" [(ngModel)]="quote.author" #author="ngModel" required minlength="3">
+    <ul *ngIf="author.errors && author.touched">
+      <li *ngIf="author.errors.required">Author is required</li>
+      <li *ngIf="author.errors.minlength">Min length 3</li>
+    </ul>
+  </div>
+
+  <div>
+    <label for="author">Message: </label>
+    <input type="text" name="message" [(ngModel)]="quote.message" #message="ngModel" required pattern="^.*\.$">
+    <ul *ngIf="message.errors && message.touched">
+      <li *ngIf="message.errors.required">Message is required</li>
+      <li *ngIf="message.errors.pattern">Needs a dot</li>
+    </ul>
+  </div>
+  <button type="submit" [disabled]="!quoteForm.valid">Create Quote</button>
+</form>
